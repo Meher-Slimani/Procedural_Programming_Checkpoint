@@ -1,0 +1,33 @@
+FUNCTION dot_product(v1, v2 : ARRAY_OF FLOAT[3]) : FLOAT
+VAR
+    ps : FLOAT;
+    i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO v1.length - 1  STEP 1  DO
+        ps += v1[i] * v2[i];
+    END_FOR
+    RETURN ps ;
+END
+ALGORITHM orthogonal_vectors
+VAR
+    n, j : INTEGER;
+    produit_scalaire : FLOAT;
+    vector1, vector2 : ARRAY_OF FLOAT[3];
+BEGIN
+    Write("Please enter the number of pairs of vectors");
+    REPEAT
+    Read(n);
+    UNTIL(n > 0);
+    FOR j FROM 1 TO n STEP 1  DO
+        Write("Please enter the first vector");
+        Read(vector1);
+        Write("Please enter the second vector");
+        Read(vector2);
+        produit_scalaire := dot_product(vector1, vector2);
+        IF (produit_scalaire = 0) THEN
+            Write("Les deux vecteurs sont orthogonaux");
+        ELSE
+            Write("Les deux vecteurs ne sont pas orthogonaux");
+        END_IF
+    END_FOR
+END
